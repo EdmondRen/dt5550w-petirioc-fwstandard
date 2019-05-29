@@ -1,0 +1,315 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Sat Mar 31 15:18:01 2018
+# Process ID: 11424
+# Current directory: C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11828 C:\Users\Andre\Desktop\DT5550W_31032018\DT5550W\FIRMWARE\DT5550w-DUAL_ASIC\DT5550w.xpr
+# Log file: C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/vivado.log
+# Journal file: C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.xpr
+update_compile_order -fileset sources_1
+close [ open C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.srcs/sources_1/new/PetirocAnalogMonitor.vhd w ]
+add_files C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.srcs/sources_1/new/PetirocAnalogMonitor.vhd
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+place_ports B_ANALOG_DIN L19
+place_ports B_ANALOG_CLK H17
+place_ports C_ANALOG_CLK P16
+place_ports C_ANALOG_DIN K25
+place_ports D_ANALOG_CLK U25
+place_ports D_ANALOG_DIN AF23
+set_property IOSTANDARD LVCMOS18 [get_ports [list D_ANALOG_CLK]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list D_ANALOG_DIN]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list C_ANALOG_CLK]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list C_ANALOG_DIN]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list B_ANALOG_DIN]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list B_ANALOG_CLK]]
+save_constraints
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+current_hw_device [get_hw_devices xc7k160t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7k160t_0] 0]
+create_hw_cfgmem -hw_device [lindex [get_hw_devices] 0] -mem_dev [lindex [get_cfgmem_parts {s25fl512s-spi-x1_x2_x4}] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+open_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/temp/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+refresh_design
+set_false_path -from [get_clocks clk_ftdi] -to [get_clocks D_LVDS_DCLK]
+save_constraints
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+refresh_design
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+close [ open C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.srcs/sources_1/new/common_trigger.vhd w ]
+add_files C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.srcs/sources_1/new/common_trigger.vhd
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+current_design synth_1
+refresh_design
+startgroup
+set_property package_pin "" [get_ports [list  trigb_mux_c]]
+place_ports {C_TRG[0]} N16
+endgroup
+place_ports {C_TRG[1]} R17
+place_ports {C_TRG[2]} U16
+place_ports {C_TRG[3]} U20
+place_ports {C_TRG[4]} N21
+place_ports {C_TRG[5]} N23
+place_ports {C_TRG[6]} T23
+place_ports {C_TRG[7]} T18
+place_ports {C_TRG[8]} T19
+place_ports {C_TRG[9]} R26
+place_ports {C_TRG[10]} N17
+place_ports {C_TRG[11]} R16
+place_ports {C_TRG[12]} T17
+place_ports {C_TRG[13]} U19
+place_ports {C_TRG[14]} M21
+place_ports {C_TRG[15]} R21
+place_ports {C_TRG[16]} N24
+place_ports {C_TRG[17]} T22
+place_ports {C_TRG[18]} K26
+place_ports {C_TRG[19]} P26
+place_ports {C_TRG[20]} R20
+place_ports {C_TRG[21]} L24
+place_ports {C_TRG[22]} M24
+place_ports {C_TRG[23]} L25
+place_ports {C_TRG[24]} P20
+place_ports {C_TRG[25]} P18
+place_ports {C_TRG[26]} P24
+place_ports {C_TRG[27]} R18
+place_ports {C_TRG[28]} T24
+place_ports {C_TRG[29]} N26
+place_ports {C_TRG[30]} R22
+place_ports {C_TRG[31]} T20
+set_property IOSTANDARD LVCMOS18 [get_ports [list {C_TRG[31]} {C_TRG[30]} {C_TRG[29]} {C_TRG[28]} {C_TRG[27]} {C_TRG[26]} {C_TRG[25]} {C_TRG[24]} {C_TRG[23]} {C_TRG[22]} {C_TRG[21]} {C_TRG[20]} {C_TRG[19]} {C_TRG[18]} {C_TRG[17]} {C_TRG[16]} {C_TRG[15]} {C_TRG[14]} {C_TRG[13]} {C_TRG[12]} {C_TRG[11]} {C_TRG[10]} {C_TRG[9]} {C_TRG[8]} {C_TRG[7]} {C_TRG[6]} {C_TRG[5]} {C_TRG[4]} {C_TRG[3]} {C_TRG[2]} {C_TRG[1]} {C_TRG[0]}]]
+place_ports {D_TRG[0]} U21
+place_ports {D_TRG[1]} W24
+place_ports {D_TRG[2]} Y22
+place_ports {D_TRG[3]} Y23
+place_ports {D_TRG[4]} AB25
+place_ports {D_TRG[5]} AC26
+place_ports {D_TRG[6]} AB24
+place_ports {D_TRG[7]} AF24
+place_ports {D_TRG[8]} AE22
+place_ports {D_TRG[9]} AF22
+place_ports {D_TRG[10]} U24
+place_ports {D_TRG[11]} V24
+place_ports {D_TRG[12]} U26
+place_ports {D_TRG[13]} AA22
+place_ports {D_TRG[14]} AA25
+place_ports {D_TRG[15]} W26
+place_ports {D_TRG[16]} AC21
+place_ports {D_TRG[17]} AC22
+place_ports {D_TRG[18]} AD24
+place_ports {D_TRG[19]} AE25
+place_ports {D_TRG[20]} U22
+place_ports {D_TRG[21]} V22
+place_ports {D_TRG[22]} V21
+place_ports {D_TRG[23]} W21
+place_ports {D_TRG[24]} W20
+place_ports {D_TRG[25]} Y21
+place_ports {D_TRG[26]} AB21
+place_ports {D_TRG[27]} AB22
+place_ports {D_TRG[28]} AD23
+place_ports {D_TRG[29]} AD25
+place_ports {D_TRG[30]} Y20
+place_ports {D_TRG[31]} V26
+set_property IOSTANDARD LVCMOS18 [get_ports [list {D_TRG[31]} {D_TRG[30]} {D_TRG[29]} {D_TRG[28]} {D_TRG[27]} {D_TRG[26]} {D_TRG[25]} {D_TRG[24]} {D_TRG[23]} {D_TRG[22]} {D_TRG[21]} {D_TRG[20]} {D_TRG[19]} {D_TRG[18]} {D_TRG[17]} {D_TRG[16]} {D_TRG[15]} {D_TRG[14]} {D_TRG[13]} {D_TRG[12]} {D_TRG[11]} {D_TRG[10]} {D_TRG[9]} {D_TRG[8]} {D_TRG[7]} {D_TRG[6]} {D_TRG[5]} {D_TRG[4]} {D_TRG[3]} {D_TRG[2]} {D_TRG[1]} {D_TRG[0]}]]
+place_ports trigb_mux_c R23
+save_constraints
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/Andre/Desktop/DT5550W_31032018/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.runs/impl_1/TopDT5550w.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
