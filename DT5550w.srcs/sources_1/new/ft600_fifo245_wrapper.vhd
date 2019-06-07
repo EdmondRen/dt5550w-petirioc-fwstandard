@@ -125,6 +125,15 @@ Port (
         INT_ResetTDCOnT0_RD : OUT STD_LOGIC_VECTOR(0 downto 0); 
         INT_ResetTDCOnT0_WR : OUT STD_LOGIC_VECTOR(0 downto 0);    
         
+        REG_HOLD_DELAY_CNTR_RD : IN  STD_LOGIC_VECTOR(31 downto 0); 
+        REG_HOLD_DELAY_CNTR_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
+        INT_HOLD_DELAY_CNTR_RD : OUT STD_LOGIC_VECTOR(0 downto 0); 
+        INT_HOLD_DELAY_CNTR_WR : OUT  STD_LOGIC_VECTOR(0 downto 0);  
+    
+        REG_EXT_HOLD_EN_RD : IN STD_LOGIC_VECTOR(31 downto 0); 
+        REG_EXT_HOLD_EN_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
+        INT_REG_EXT_HOLD_EN_RD : OUT  STD_LOGIC_VECTOR(0 downto 0); 
+        INT_REG_EXT_HOLD_EN_WR : OUT  STD_LOGIC_VECTOR(0 downto 0);          
         
             
         REG_TRGsel_RD : IN STD_LOGIC_VECTOR(31 downto 0); 
@@ -672,7 +681,8 @@ dest_out => send_sheet_sync
             
             BUS_ImageReadout_0_W_INT <= "0";
             INT_ImageReadout_0_READ_STATUS_RD <= "0";
-
+            INT_HOLD_DELAY_CNTR_WR <= "0"; 
+            INT_REG_EXT_HOLD_EN_WR <= "0"; 
     
             BUS_i2c_0_W_INT <= "0";
             INT_i2c_0_REG_CTRL_WR <= "0";
@@ -770,6 +780,17 @@ dest_out => send_sheet_sync
                 INT_ResetTDCOnT0_WR <= "1"; 
             end if;       
             
+            
+            if addr = x"FFFFF91C"  then
+                REG_HOLD_DELAY_CNTR_WR   <= wreg; 
+                INT_HOLD_DELAY_CNTR_WR <= "1"; 
+            end if;       
+              
+            if addr = x"FFFFF91D"  then
+                REG_EXT_HOLD_EN_WR   <= wreg; 
+                INT_REG_EXT_HOLD_EN_WR <= "1"; 
+            end if;                  
+
                             
             if addr = x"FFFEF000"  then
                 REG_FLASH_CNTR_WR     <= wreg; 

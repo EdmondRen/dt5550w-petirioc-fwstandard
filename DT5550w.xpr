@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="35" Path="E:/VIVADO_PROJ/DT5550w-QUAD_ASIC/DT5550w.xpr">
+<Project Version="7" Minor="35" Path="E:/GIT/DT5550W-PETIROC/DT5550w-QUAD_ASIC/DT5550w.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="0aca16eca5d9460290908bd8c1046fa4"/>
@@ -123,6 +123,12 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/new/adcs_top.vhd"/>
           <Attr Name="ImportTime" Val="1522315869"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/delay_box.vhd">
+        <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>

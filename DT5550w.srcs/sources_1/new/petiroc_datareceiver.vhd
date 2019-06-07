@@ -12,8 +12,10 @@ use UNISIM.VComponents.all;
 entity petiroc_datareceiver is
     Port (  
           clk : in std_logic;
+          hold_ext_trigger : in std_logic;
           trigger_in : in std_logic;
           transmit_on : in std_logic;
+          hold_external_hold : out std_logic;
           data_in : in std_logic;
           raz_chn_f : in std_logic;
           chrage_trig : in std_logic;
@@ -110,6 +112,9 @@ architecture Behavioral of petiroc_datareceiver is
     signal TimeStampI : std_logic;
     signal TimeStampIo : std_logic;
     signal EventTime :  std_logic_vector (29 downto 0) := "00" & x"0000000";
+    
+    signal iTRG_EXT : std_logic;
+    signal oTRG_EXT : std_logic;
 begin
 
 xpm_RunTimer: xpm_cdc_array_single
@@ -203,14 +208,14 @@ xpm_T0Timer: xpm_cdc_array_single
             raz_chn <= '1';
             val_evnt <= '1';
         else
-            if start_c_raz = x"1F" then
+            if start_c_raz = x"0F" then
                 raz_chn <= '1';
                 val_evnt <= '0';
             else
-                if start_c_raz = x"15" then
+                if start_c_raz = x"0A" then
                     raz_chn <= '0';
                 else
-                    if start_c_raz = x"7" then
+                    if start_c_raz = x"07" then
                         raz_chn <= '1';
                     end if;
                 end if;
@@ -225,7 +230,8 @@ xpm_T0Timer: xpm_cdc_array_single
         TRASMIT_ON_i <= transmit_on;
         TRASMIT_ON_o <= TRASMIT_ON_i;
         
-       
+        iTRG_EXT <=  hold_ext_trigger;
+        oTRG_EXT <= iTRG_EXT;
                    if start_c_counter = x"0" then
                         START_CONV <= '0';
                     else
@@ -239,7 +245,7 @@ xpm_T0Timer: xpm_cdc_array_single
                 if TRASMIT_ON_i = '0' then  --non devo già essere in trasmissione
                 --aspetta che la trasmissione finisca, prenderemo il prossimo
                 else
-                    if (TRG0_i = '0' and TriggerSelector='0') or (ichrage_trig = '0' and TriggerSelector='1') then--and ichrage_trig='1' and ochrage_trig = '0'  then                        --il trigger deve essere basso
+                    if ((TRG0_i = '0' and TriggerSelector='0') or (ichrage_trig = '0' and TriggerSelector='1') or (iTRG_EXT='1' and oTRG_EXT='0')) and (daq_veto='0') then--and ichrage_trig='1' and ochrage_trig = '0'  then                        --il trigger deve essere basso
                         daq_event <= '1';                       --evento
                         CapturedRun <= cRunTimer;
                         --START_CONV <= '1';                      --Genera un impulso di START_CONV abbastanza lungo
@@ -248,13 +254,14 @@ xpm_T0Timer: xpm_cdc_array_single
                         DAQSM <= x"F";
                         skip <= '0';  
                         timeoutWAITRASMITON <= 4000;   
-                        inTrasmission <= '0';                     
+                        inTrasmission <= '0';          
+                        hold_external_hold <= '1';           
                     end if;
                 end if; 
             when x"F" =>
                if initCounter = 0 then                        --il trigger deve essere basso
                    START_CONV <= '1';                      --Genera un impulso di START_CONV abbastanza lungo
-                   start_c_counter <= x"3F";    
+                   start_c_counter <= x"0F";    
                    DAQSM <= x"1";
                    T0counter_sync <= cT0counter;            --cattura il T0
                else
@@ -292,6 +299,7 @@ xpm_T0Timer: xpm_cdc_array_single
                 end if;
                 
                 if TRASMIT_ON_i = '0' and TRASMIT_ON_o = '1' then           --avvio trasmissione
+                    hold_external_hold <= '0';
                     inTrasmission <= '1';
                     bit_counter <= (others => '0');
                     
@@ -315,7 +323,7 @@ xpm_T0Timer: xpm_cdc_array_single
                     FIFO_DIN <= x"C0000000";
                     daq_stroed_event <= storePackage;
                     fifo_we <= storePackage;    
-                    start_c_raz <= x"1F";
+                    start_c_raz <= x"0F";
                     DAQSM <= x"2";
                     end_counter <= 128;
                 end if;

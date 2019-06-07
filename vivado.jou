@@ -2,11 +2,11 @@
 # Vivado v2018.1 (64-bit)
 # SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
 # IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
-# Start of session at: Mon Sep  3 19:30:25 2018
-# Process ID: 19536
-# Current directory: e:/VIVADO_PROJ/DT5550w-DUAL_ASIC
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent27452 E:\VIVADO_PROJ\DT5550w-DUAL_ASIC\DT5550w.xpr
-# Log file: e:/VIVADO_PROJ/DT5550w-DUAL_ASIC/vivado.log
-# Journal file: e:/VIVADO_PROJ/DT5550w-DUAL_ASIC\vivado.jou
+# Start of session at: Thu Jun  6 15:18:17 2019
+# Process ID: 1028
+# Current directory: e:/GIT/DT5550W-PETIROC/DT5550w-QUAD_ASIC
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent21708 E:\GIT\DT5550W-PETIROC\DT5550w-QUAD_ASIC\DT5550w.xpr
+# Log file: e:/GIT/DT5550W-PETIROC/DT5550w-QUAD_ASIC/vivado.log
+# Journal file: e:/GIT/DT5550W-PETIROC/DT5550w-QUAD_ASIC\vivado.jou
 #-----------------------------------------------------------
 start_gui

@@ -325,7 +325,16 @@ architecture Behavioral of TopDT5550w is
             INT_ResetTDCOnT0_RD : OUT STD_LOGIC_VECTOR(0 downto 0); 
             INT_ResetTDCOnT0_WR : OUT STD_LOGIC_VECTOR(0 downto 0);     
             
-                       
+            REG_HOLD_DELAY_CNTR_RD : IN  STD_LOGIC_VECTOR(31 downto 0); 
+            REG_HOLD_DELAY_CNTR_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
+            INT_HOLD_DELAY_CNTR_RD : OUT STD_LOGIC_VECTOR(0 downto 0); 
+            INT_HOLD_DELAY_CNTR_WR : OUT  STD_LOGIC_VECTOR(0 downto 0);  
+        
+            REG_EXT_HOLD_EN_RD : IN STD_LOGIC_VECTOR(31 downto 0); 
+            REG_EXT_HOLD_EN_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
+            INT_REG_EXT_HOLD_EN_RD : OUT  STD_LOGIC_VECTOR(0 downto 0); 
+            INT_REG_EXT_HOLD_EN_WR : OUT  STD_LOGIC_VECTOR(0 downto 0);    
+                                   
           -- Fifo Interface
                     
             BUS_ImageReadout_0_READ_DATA : IN STD_LOGIC_VECTOR(31 downto 0); 
@@ -534,6 +543,8 @@ END COMPONENT;
         Port (  
           clk : in std_logic;
         trigger_in : in std_logic;
+        hold_ext_trigger : in std_logic;
+        hold_external_hold : out std_logic;
         transmit_on : in std_logic;
         data_in : in std_logic;
         raz_chn_f : in std_logic;
@@ -696,6 +707,14 @@ END COMPONENT;
     end component;  
 
         
+    component delay_box is
+        Port ( 
+               clk : in STD_LOGIC;
+               input_signal : in STD_LOGIC;
+               output_signal : out STD_LOGIC;
+               delay_value : in STD_LOGIC_VECTOR (15 downto 0));
+    end component;
+            
     signal reset: std_logic := '0';
     
     signal f_BUS_ADDR 		 : STD_LOGIC_VECTOR(31 downto 0);	--INDIRIZZO DI LETTURA/SCRITTURA
@@ -1036,6 +1055,19 @@ END COMPONENT;
     signal INT_FLASH_CNTR_RD :  STD_LOGIC_VECTOR(0 downto 0); 
     signal INT_FLASH_CNTR_WR :  STD_LOGIC_VECTOR(0 downto 0); 
     
+    
+    signal REG_HOLD_DELAY_CNTR_RD :  STD_LOGIC_VECTOR(31 downto 0); 
+    signal REG_HOLD_DELAY_CNTR_WR :  STD_LOGIC_VECTOR(31 downto 0); 
+    signal INT_HOLD_DELAY_CNTR_RD :  STD_LOGIC_VECTOR(0 downto 0); 
+    signal INT_HOLD_DELAY_CNTR_WR :  STD_LOGIC_VECTOR(0 downto 0);  
+
+    signal REG_EXT_HOLD_EN_RD :  STD_LOGIC_VECTOR(31 downto 0); 
+    signal REG_EXT_HOLD_EN_WR :  STD_LOGIC_VECTOR(31 downto 0); 
+    signal INT_REG_EXT_HOLD_EN_RD :  STD_LOGIC_VECTOR(0 downto 0); 
+    signal INT_REG_EXT_HOLD_EN_WR :  STD_LOGIC_VECTOR(0 downto 0);  
+    
+       
+    
     signal REG_FLASH_ADDRESS_RD :  STD_LOGIC_VECTOR(31 downto 0); 
     signal REG_FLASH_ADDRESS_WR :  STD_LOGIC_VECTOR(31 downto 0); 
     signal INT_FLASH_ADDRESS_RD :  STD_LOGIC_VECTOR(0 downto 0); 
@@ -1064,6 +1096,15 @@ END COMPONENT;
     
     signal iT0Pulse : std_logic_vector (3 downto 0) := x"0";
     signal xT0 : std_logic := '0';
+    
+    signal TrigINDelayed : std_logic;
+    signal EXT_Trig_FROM_HoldExt : std_logic;
+
+    signal hold_external_hold : std_logic;
+    signal hold_external_hold1 : std_logic;
+    signal hold_external_hold2 : std_logic;
+    signal hold_external_hold3 : std_logic;
+    signal hold_external_hold4 : std_logic;
 --    signal C_TRG :  STD_LOGIC_VECTOR(31 downto 0) := (others => '1');
 --    signal D_TRG :  STD_LOGIC_VECTOR(31 downto 0) := (others => '1');
 begin
@@ -1392,6 +1433,8 @@ begin
     PT0 : petiroc_datareceiver Port map (  
               clk => D_LVDS_DCLK,
               trigger_in => A_trigger_logic, --trig_fake_pulse,
+              hold_ext_trigger => EXT_Trig_FROM_HoldExt,
+              hold_external_hold => hold_external_hold1,
               transmit_on => A_TRASMIT_ON,
               data_in => A_LVDS_DOUT,
               raz_chn_f => raz_chn_f,
@@ -1424,6 +1467,8 @@ begin
     PT1 : petiroc_datareceiver Port map (  
               clk => D_LVDS_DCLK,
               trigger_in => B_trigger_logic, --B_trigger_logic,
+              hold_ext_trigger => EXT_Trig_FROM_HoldExt,
+              hold_external_hold => hold_external_hold2,
               transmit_on => B_TRASMIT_ON,
               data_in => B_LVDS_DOUT,
               raz_chn_f => raz_chn_f,
@@ -1456,6 +1501,8 @@ begin
     PT2 : petiroc_datareceiver Port map (  
               clk => D_LVDS_DCLK,
               trigger_in => C_trigger_logic,
+              hold_ext_trigger => EXT_Trig_FROM_HoldExt,
+              hold_external_hold => hold_external_hold3,
               transmit_on => C_TRASMIT_ON,
               data_in => C_LVDS_DOUT,
               raz_chn_f => raz_chn_f,
@@ -1488,6 +1535,8 @@ begin
      PT3 : petiroc_datareceiver Port map (  
               clk => D_LVDS_DCLK,
               trigger_in => D_trigger_logic,
+              hold_ext_trigger => EXT_Trig_FROM_HoldExt,
+              hold_external_hold => hold_external_hold4,
               transmit_on => D_TRASMIT_ON,
               data_in => D_LVDS_DOUT,
               raz_chn_f => raz_chn_f,
@@ -1657,10 +1706,23 @@ begin
 --    A_raz_chn <= D_raz_chn;
    --A_START_CONV <=  start_conv_glb;
 --    D_START_CONV <= start_conv_glb;
-    A_HOLD_EXT <= '0';
-    B_HOLD_EXT <= '0';
-    C_HOLD_EXT <= '0';
-    D_HOLD_EXT <= '0';
+
+    DB_Trig: delay_box
+        Port Map( 
+           clk => CLK_320(0),
+           input_signal => LEMO2,
+           output_signal => TrigINDelayed,
+           delay_value => REG_HOLD_DELAY_CNTR_WR(15 downto 0)
+           );
+
+    EXT_Trig_FROM_HoldExt <= TrigINDelayed when REG_EXT_HOLD_EN_WR(0) = '1' else '0';
+
+
+    hold_external_hold <= hold_external_hold1 or hold_external_hold2  or TrigINDelayed;
+    A_HOLD_EXT <= hold_external_hold when REG_EXT_HOLD_EN_WR(0) = '1' else '0';
+    B_HOLD_EXT <= hold_external_hold when REG_EXT_HOLD_EN_WR(0) = '1' else '0';
+    C_HOLD_EXT <= hold_external_hold when REG_EXT_HOLD_EN_WR(0) = '1' else '0';
+    D_HOLD_EXT <= hold_external_hold when REG_EXT_HOLD_EN_WR(0) = '1' else '0';
     
    D_DOUT_LVDS : IBUFDS
    generic map (
@@ -1919,7 +1981,18 @@ begin
         REG_ResetTDCOnT0_WR => REG_ResetTDCOnT0_WR, 
         INT_ResetTDCOnT0_RD => INT_ResetTDCOnT0_RD, 
         INT_ResetTDCOnT0_WR => INT_ResetTDCOnT0_WR,
-                                    
+
+
+        REG_HOLD_DELAY_CNTR_RD => REG_HOLD_DELAY_CNTR_RD, 
+        REG_HOLD_DELAY_CNTR_WR => REG_HOLD_DELAY_CNTR_WR, 
+        INT_HOLD_DELAY_CNTR_RD => INT_HOLD_DELAY_CNTR_RD, 
+        INT_HOLD_DELAY_CNTR_WR => INT_HOLD_DELAY_CNTR_WR, 
+        
+        REG_EXT_HOLD_EN_RD => REG_EXT_HOLD_EN_RD, 
+        REG_EXT_HOLD_EN_WR => REG_EXT_HOLD_EN_WR, 
+        INT_REG_EXT_HOLD_EN_RD => INT_REG_EXT_HOLD_EN_RD, 
+        INT_REG_EXT_HOLD_EN_WR => INT_REG_EXT_HOLD_EN_WR,    
+                                                
       -- Fifo Interface
                 
         BUS_ImageReadout_0_READ_DATA => ImageReadout_0_READ_DATA, 
