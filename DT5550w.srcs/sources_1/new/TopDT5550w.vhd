@@ -1718,7 +1718,11 @@ begin
     EXT_Trig_FROM_HoldExt <= TrigINDelayed when REG_EXT_HOLD_EN_WR(0) = '1' else '0';
 
 
-    hold_external_hold <= hold_external_hold1 or hold_external_hold2  or TrigINDelayed;
+    hold_external_hold <= (hold_external_hold1 and (not cL_AsicDisable(0))) or
+                            (hold_external_hold2 and (not cL_AsicDisable(1))) or
+                            (hold_external_hold3 and (not cL_AsicDisable(2))) or
+                            (hold_external_hold4 and (not cL_AsicDisable(3))) or
+                             TrigINDelayed;
     A_HOLD_EXT <= hold_external_hold when REG_EXT_HOLD_EN_WR(0) = '1' else '0';
     B_HOLD_EXT <= hold_external_hold when REG_EXT_HOLD_EN_WR(0) = '1' else '0';
     C_HOLD_EXT <= hold_external_hold when REG_EXT_HOLD_EN_WR(0) = '1' else '0';

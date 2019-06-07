@@ -374,8 +374,6 @@ set_property IOSTANDARD LVCMOS18 [get_ports {A_TRG[31]}]
 
 
 
-set_property PACKAGE_PIN AF22 [get_ports D_TRG0]
-set_property IOSTANDARD LVCMOS18 [get_ports D_TRG0]
 
 
 
@@ -1000,7 +998,6 @@ set_property IOSTANDARD LVDS [get_ports {ADC_1_DATA_A_P[7]}]
 set_property IOSTANDARD LVDS [get_ports {ADC_1_DATA_A_N[7]}]
 set_property IODELAY_GROUP IODELAY_ADC1 [get_cells adcs/adc_interface1/ADC_DESER1/delayctrl]
 set_property IODELAY_GROUP IODELAY_ADC1 [get_cells adcs/adc_interface1/ADC_DESER1/idelaye2_clk]
-set_property IODELAY_GROUP IODELAY_ADC1 [get_cells {adcs/adc_interface1/ADC_DESER1/pins[0].idelaye2_bus}]
 set_property IODELAY_GROUP IODELAY_ADC1 [get_cells {adcs/adc_interface1/ADC_DESER1/pins[1].idelaye2_bus}]
 set_property IODELAY_GROUP IODELAY_ADC1 [get_cells {adcs/adc_interface1/ADC_DESER1/pins[2].idelaye2_bus}]
 set_property IODELAY_GROUP IODELAY_ADC1 [get_cells {adcs/adc_interface1/ADC_DESER1/pins[3].idelaye2_bus}]
@@ -1029,8 +1026,6 @@ set_property CLOCK_DEDICATED_ROUTE TRUE [get_nets clk_100]
 
 
 
-set_false_path -from [get_pins adcs/adc_interface1/ADC_SYNC1/iinitialized_reg/C] -to [get_pins adcs/adc_interface1/aaprog.iinitialized1_reg/D]
-set_false_path -from [get_pins adcs/adc_interface1/start_delay_reg/C] -to [get_pins adcs/adc_interface1/ADC_SYNC1/istart_delay_reg/D]
 
 
 #create_debug_core u_ila_0 ila
@@ -1285,9 +1280,9 @@ set_property PACKAGE_PIN R23 [get_ports trigb_mux_c]
 set_false_path -from [get_clocks -of_objects [get_pins adcs/adc_interface1/ADC_DESER1/clkout_buf_inst/O]] -to [get_clocks -of_objects [get_pins adcs/dcm_ref/inst/mmcm_adv_inst/CLKOUT2]]
 set_false_path -from [get_clocks -of_objects [get_pins adcs/dcm_ref/inst/mmcm_adv_inst/CLKOUT2]] -to [get_clocks -of_objects [get_pins adcs/adc_interface1/ADC_DESER1/clkout_buf_inst/O]]
 set_false_path -from [get_clocks D_LVDS_DCLK] -to [get_clocks -of_objects [get_pins adcs/adc_interface1/ADC_DESER1/clkout_buf_inst/O]]
-set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
-set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
-set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
 
 
 
+
+set_property IODELAY_GROUP TIME_GROUP_ADC_1 [get_cells adcs/adc_interface1/ADC_DESER1/pins[0].idelaye2_bus]
+set_false_path -from [get_clocks D_LVDS_DCLK] -to [get_clocks -of_objects [get_pins dcm_top/inst/mmcm_adv_inst/CLKOUT0]]
