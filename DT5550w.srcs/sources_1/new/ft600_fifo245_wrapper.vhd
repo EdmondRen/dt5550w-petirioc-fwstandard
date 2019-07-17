@@ -486,36 +486,74 @@ dest_out => send_sheet_sync
 	BUS_Oscilloscope_0_R_INT(0)    <= f_BUS_INT_RD when (addr >= x"80070000" And addr < x"80080000") else '0';
 	BUS_FLASH_0_R_INT(0)           <= f_BUS_INT_RD when (addr >= x"FFFE0000" And addr < x"FFFEE000") else '0';
 	
-	BUS_PROCCFG_0_READ_ADDRESS     <= BUS_ADDR(15 downto 0) when (addr >= x"80010000" And addr < x"80020000") else (others => '0');
-	BUS_PROCCFG_1_READ_ADDRESS     <= BUS_ADDR(15 downto 0) when (addr >= x"80020000" And addr < x"80030000") else (others => '0');
-	BUS_PROCCFG_2_READ_ADDRESS     <= BUS_ADDR(15 downto 0) when (addr >= x"80030000" And addr < x"80040000") else (others => '0');
-	BUS_PROCCFG_3_READ_ADDRESS     <= BUS_ADDR(15 downto 0) when (addr >= x"80040000" And addr < x"80050000") else (others => '0');
-	BUS_CLKCFG_READ_ADDRESS        <= BUS_ADDR(15 downto 0) when (addr >= x"80060000" And addr < x"80070000") else (others => '0');
-	BUS_Oscilloscope_0_ADDRESS     <= BUS_ADDR(15 downto 0) when (addr >= x"80070000" And addr < x"80080000") else (others => '0');
-	BUS_FQMETER_ADDRESS            <= BUS_ADDR(15 downto 0) when (addr >= x"80080000" And addr < x"80090000") else (others => '0');
-	BUS_FLASH_0_ADDRESS            <= BUS_ADDR(15 downto 0) when (addr >= x"FFFE0000" And addr < x"FFFEE000") else (others => '0');
+	BUS_PROCCFG_0_READ_ADDRESS     <= BUS_ADDR(15 downto 0); --when (addr >= x"80010000" And addr < x"80020000") else (others => '0');
+	BUS_PROCCFG_1_READ_ADDRESS     <= BUS_ADDR(15 downto 0); --when (addr >= x"80020000" And addr < x"80030000") else (others => '0');
+	BUS_PROCCFG_2_READ_ADDRESS     <= BUS_ADDR(15 downto 0); --when (addr >= x"80030000" And addr < x"80040000") else (others => '0');
+	BUS_PROCCFG_3_READ_ADDRESS     <= BUS_ADDR(15 downto 0); --when (addr >= x"80040000" And addr < x"80050000") else (others => '0');
+	BUS_CLKCFG_READ_ADDRESS        <= BUS_ADDR(15 downto 0); --when (addr >= x"80060000" And addr < x"80070000") else (others => '0');
+	BUS_Oscilloscope_0_ADDRESS     <= BUS_ADDR(15 downto 0); --when (addr >= x"80070000" And addr < x"80080000") else (others => '0');
+	BUS_FQMETER_ADDRESS            <= BUS_ADDR(15 downto 0); --when (addr >= x"80080000" And addr < x"80090000") else (others => '0');
+	BUS_FLASH_0_ADDRESS            <= BUS_ADDR(15 downto 0);-- when (addr >= x"FFFE0000" And addr < x"FFFEE000") else (others => '0');
 	
 	
 
 	
-	
-	BUS_PROCCFG_0_WRITE_DATA <= f_BUS_DATA_WR;
-	BUS_PROCCFG_1_WRITE_DATA <= f_BUS_DATA_WR;
-	BUS_PROCCFG_2_WRITE_DATA <= f_BUS_DATA_WR;
-	BUS_PROCCFG_3_WRITE_DATA <= f_BUS_DATA_WR;
-	BUS_CLKCFG_WRITE_DATA <= f_BUS_DATA_WR;
-	BUS_Oscilloscope_0_WRITE_DATA  <= f_BUS_DATA_WR;
-	BUS_FLASH_0_WRITE_DATA  <= f_BUS_DATA_WR;
+
 	
 	
+	outFF : process (clk)
+	begin
+	   if rising_edge(clk) then
+	   	
+           BUS_PROCCFG_0_WRITE_DATA <= f_BUS_DATA_WR;
+           BUS_PROCCFG_1_WRITE_DATA <= f_BUS_DATA_WR;
+           BUS_PROCCFG_2_WRITE_DATA <= f_BUS_DATA_WR;
+           BUS_PROCCFG_3_WRITE_DATA <= f_BUS_DATA_WR;
+           BUS_CLKCFG_WRITE_DATA <= f_BUS_DATA_WR;
+           BUS_Oscilloscope_0_WRITE_DATA  <= f_BUS_DATA_WR;
+           BUS_FLASH_0_WRITE_DATA  <= f_BUS_DATA_WR;
+           
+	       if addr >= x"80010000" And addr < x"80020000" then
+	           BUS_PROCCFG_0_W_INT(0) <=  f_BUS_INT_WR;       
+	       end if;
+	       
+	       if addr >= x"80020000" And addr < x"80030000" then
+	           BUS_PROCCFG_1_W_INT(0) <=  f_BUS_INT_WR;
+	       end if;
+	       
+            if addr >= x"80030000" And addr < x"80040000" then
+                BUS_PROCCFG_2_W_INT(0) <=  f_BUS_INT_WR;
+            end if; 	       
+            
+            if addr >= x"80040000" And addr < x"80050000" then
+                BUS_PROCCFG_3_W_INT(0) <=  f_BUS_INT_WR;
+            end if;
+            
+            if addr >= x"80060000" And addr < x"80070000" then
+                BUS_PROCCFG_3_W_INT(0) <=  f_BUS_INT_WR;
+            end if;
+            
+            if addr >= x"80060000" And addr < x"80070000" then
+                BUS_CLKCFG_W_INT(0) <=  f_BUS_INT_WR;
+            end if;
+            
+            if addr >= x"80070000" And addr < x"80080000" then
+                BUS_Oscilloscope_0_W_INT (0) <=  f_BUS_INT_WR;
+            end if;
+            
+            if addr >= x"FFFE0000" And addr < x"FFFEE000" then
+                BUS_FLASH_0_W_INT (0) <=  f_BUS_INT_WR;
+            end if;
+	   end if;
+	end process;
 	
-	BUS_PROCCFG_0_W_INT(0) <=  f_BUS_INT_WR when (addr >= x"80010000" And addr < x"80020000") else '0';
-	BUS_PROCCFG_1_W_INT(0) <=  f_BUS_INT_WR when (addr >= x"80020000" And addr < x"80030000") else '0';
-	BUS_PROCCFG_2_W_INT(0) <=  f_BUS_INT_WR when (addr >= x"80030000" And addr < x"80040000") else '0';
-	BUS_PROCCFG_3_W_INT(0) <=  f_BUS_INT_WR when (addr >= x"80040000" And addr < x"80050000") else '0';
-	BUS_CLKCFG_W_INT(0) <=  f_BUS_INT_WR when (addr >= x"80060000" And addr < x"80070000") else '0';
-	BUS_Oscilloscope_0_W_INT (0) <=  f_BUS_INT_WR when (addr >= x"80070000" And addr < x"80080000") else '0';
-	BUS_FLASH_0_W_INT (0) <=  f_BUS_INT_WR when (addr >= x"FFFE0000" And addr < x"FFFEE000") else '0';
+--	BUS_PROCCFG_0_W_INT(0) <=  f_BUS_INT_WR when (addr >= x"80010000" And addr < x"80020000") else '0';
+--	BUS_PROCCFG_1_W_INT(0) <=  f_BUS_INT_WR when (addr >= x"80020000" And addr < x"80030000") else '0';
+--	BUS_PROCCFG_2_W_INT(0) <=  f_BUS_INT_WR when (addr >= x"80030000" And addr < x"80040000") else '0';
+--	BUS_PROCCFG_3_W_INT(0) <=  f_BUS_INT_WR when (addr >= x"80040000" And addr < x"80050000") else '0';
+--	BUS_CLKCFG_W_INT(0) <=  f_BUS_INT_WR when (addr >= x"80060000" And addr < x"80070000") else '0';
+--	BUS_Oscilloscope_0_W_INT (0) <=  f_BUS_INT_WR when (addr >= x"80070000" And addr < x"80080000") else '0';
+--	BUS_FLASH_0_W_INT (0) <=  f_BUS_INT_WR when (addr >= x"FFFE0000" And addr < x"FFFEE000") else '0';
 	
 	
     f_BUS_DATA_RD <=    BUS_ImageReadout_0_READ_DATA when (addr >= x"80000000" And addr < x"80000001") else  
