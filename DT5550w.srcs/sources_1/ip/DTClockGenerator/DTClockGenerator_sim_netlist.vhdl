@@ -1,10 +1,10 @@
 -- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
--- Date        : Thu Mar 29 12:04:18 2018
--- Host        : DESKTOP-FHC6I48 running 64-bit major release  (build 9200)
+-- Tool Version: Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
+-- Date        : Thu Jan 16 12:36:11 2020
+-- Host        : vivado4 running 64-bit Ubuntu 18.04.3 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               e:/WEEROC/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.srcs/sources_1/ip/DTClockGenerator/DTClockGenerator_sim_netlist.vhdl
+--               /home/user/GIT/DT5550W/dt5550w-petirioc-fwstandard/DT5550w.srcs/sources_1/ip/DTClockGenerator/DTClockGenerator_sim_netlist.vhdl
 -- Design      : DTClockGenerator
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.

@@ -62,6 +62,11 @@ Port (
 		REG_T0sel_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
 		INT_T0sel_RD : OUT STD_LOGIC_VECTOR(0 downto 0); 
 		INT_T0sel_WR : OUT STD_LOGIC_VECTOR(0 downto 0); 
+		
+        REG_RUNsel_RD : IN STD_LOGIC_VECTOR(31 downto 0); 
+        REG_RUNsel_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
+        INT_RUNsel_RD : OUT STD_LOGIC_VECTOR(0 downto 0); 
+        INT_RUNsel_WR : OUT STD_LOGIC_VECTOR(0 downto 0); 		
 
 		REG_T0sw_RD : IN STD_LOGIC_VECTOR(31 downto 0); 
 		REG_T0sw_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
@@ -725,6 +730,7 @@ dest_out => send_sheet_sync
             BUS_i2c_0_W_INT <= "0";
             INT_i2c_0_REG_CTRL_WR <= "0";
             INT_i2c_0_REG_MON_RD <= "0";
+            INT_RUNsel_WR <= "0"; 
       
                     if f_BUS_INT_WR = '1' then
             if addr = x"FFFFF900"  then
@@ -829,6 +835,11 @@ dest_out => send_sheet_sync
                 INT_REG_EXT_HOLD_EN_WR <= "1"; 
             end if;                  
 
+
+            if addr = x"FFFFF91E"  then
+                REG_RUNsel_WR     <= wreg; 
+                INT_RUNsel_WR <= "1"; 
+            end if;    
                             
             if addr = x"FFFEF000"  then
                 REG_FLASH_CNTR_WR     <= wreg; 

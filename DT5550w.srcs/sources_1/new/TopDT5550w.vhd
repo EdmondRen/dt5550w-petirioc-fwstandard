@@ -272,13 +272,19 @@ architecture Behavioral of TopDT5550w is
 		    REG_T0sel_RD : IN STD_LOGIC_VECTOR(31 downto 0); 
             REG_T0sel_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
             INT_T0sel_RD : OUT STD_LOGIC_VECTOR(0 downto 0); 
-            INT_T0sel_WR : OUT STD_LOGIC_VECTOR(0 downto 0); 
+            INT_T0sel_WR : OUT STD_LOGIC_VECTOR(0 downto 0);
+            
+            
+            REG_RUNsel_RD : IN STD_LOGIC_VECTOR(31 downto 0); 
+            REG_RUNsel_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
+            INT_RUNsel_RD : OUT STD_LOGIC_VECTOR(0 downto 0); 
+            INT_RUNsel_WR : OUT STD_LOGIC_VECTOR(0 downto 0); 
     
             REG_T0sw_RD : IN STD_LOGIC_VECTOR(31 downto 0); 
             REG_T0sw_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
             INT_T0sw_RD : OUT STD_LOGIC_VECTOR(0 downto 0); 
             INT_T0sw_WR : OUT STD_LOGIC_VECTOR(0 downto 0); 
-    
+               
             REG_T0sw_mode_RD : IN STD_LOGIC_VECTOR(31 downto 0); 
             REG_T0sw_mode_WR : OUT STD_LOGIC_VECTOR(31 downto 0); 
             INT_T0sw_mode_RD : OUT STD_LOGIC_VECTOR(0 downto 0); 
@@ -867,6 +873,11 @@ END COMPONENT;
     signal REG_T0sel_WR : STD_LOGIC_VECTOR(31 downto 0); 
     signal INT_T0sel_RD : STD_LOGIC_VECTOR(0 downto 0); 
     signal INT_T0sel_WR : STD_LOGIC_VECTOR(0 downto 0); 
+    
+	signal REG_RUNsel_RD : STD_LOGIC_VECTOR(31 downto 0); 
+    signal REG_RUNsel_WR : STD_LOGIC_VECTOR(31 downto 0); 
+    signal INT_RUNsel_RD : STD_LOGIC_VECTOR(0 downto 0); 
+    signal INT_RUNsel_WR : STD_LOGIC_VECTOR(0 downto 0);     
 
     signal REG_T0sw_RD : STD_LOGIC_VECTOR(31 downto 0); 
     signal REG_T0sw_WR : STD_LOGIC_VECTOR(31 downto 0); 
@@ -1105,6 +1116,10 @@ END COMPONENT;
     signal hold_external_hold2 : std_logic;
     signal hold_external_hold3 : std_logic;
     signal hold_external_hold4 : std_logic;
+    
+    
+    signal RUNsel : std_logic := '0';
+    signal RUNSignal : std_logic := '0';
 --    signal C_TRG :  STD_LOGIC_VECTOR(31 downto 0) := (others => '1');
 --    signal D_TRG :  STD_LOGIC_VECTOR(31 downto 0) := (others => '1');
 begin
@@ -1267,6 +1282,10 @@ begin
     end process;
 
 
+    
+    RUNsel <= REG_RUNsel_WR(0);
+    RUNSignal <= (RUNsel and LEMO0);
+    fifo_reset <=  REG_Fiforeset(0) or RunSignal;
 
     runcounter : process (timecode_clock) 
     begin
@@ -1935,6 +1954,11 @@ begin
         REG_T0sel_WR => REG_T0sel_WR,
         INT_T0sel_RD => open,
         INT_T0sel_WR => open,
+        
+        REG_RUNsel_RD => REG_RUNsel_WR,
+        REG_RUNsel_WR => REG_RUNsel_WR,
+        INT_RUNsel_RD => open,
+        INT_RUNsel_WR => open,        
                                 
         REG_T0sw_RD => REG_T0sw_WR,
         REG_T0sw_WR => REG_T0sw_WR, 
@@ -2055,7 +2079,7 @@ begin
         REG_UNIQUE_WR => open, 
 
          
-        REG_FIRMWARE_BUILD =>x"18100201",
+        REG_FIRMWARE_BUILD =>x"20012001",
         
       --FLASH CONTROLLER
         BUS_Flash_0_READ_DATA => BUS_Flash_0_READ_DATA,
@@ -2384,7 +2408,7 @@ begin
    D_STARTB_ADC_EXT <= REG_Startb(3);
    
    
-   fifo_reset <=  REG_Fiforeset(0);
+   
    
    internal_pulser_enableA <= REG_SelfTrigger(0);
    internal_pulser_enableB <= REG_SelfTrigger(0);

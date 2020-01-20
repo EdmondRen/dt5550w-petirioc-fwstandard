@@ -1,10 +1,10 @@
 -- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
--- Date        : Sat Mar 17 18:25:53 2018
--- Host        : DESKTOP-FHC6I48 running 64-bit major release  (build 9200)
+-- Tool Version: Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
+-- Date        : Thu Jan 16 12:37:15 2020
+-- Host        : vivado4 running 64-bit Ubuntu 18.04.3 LTS
 -- Command     : write_vhdl -force -mode synth_stub
---               E:/WEEROC/DT5550W/FIRMWARE/DT5550w-DUAL_ASIC/DT5550w.srcs/sources_1/ip/FTDI_FIFOs/FTDI_FIFOs_stub.vhdl
+--               /home/user/GIT/DT5550W/dt5550w-petirioc-fwstandard/DT5550w.srcs/sources_1/ip/FTDI_FIFOs/FTDI_FIFOs_stub.vhdl
 -- Design      : FTDI_FIFOs
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7k160tffg676-2
