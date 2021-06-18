@@ -56,10 +56,11 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1___320.000______0.000______50.0_______94.983_____95.076
-// clk_out2___160.000______0.000______50.0______108.430_____95.076
-// clk_out3____80.000______0.000______50.0______124.157_____95.076
-// clk_out4____40.000______0.000______50.0______143.129_____95.076
+// clk_out1___320.000______0.000______50.0_______98.330____103.475
+// clk_out2___160.000______0.000______50.0______112.400____103.475
+// clk_out3____80.000______0.000______50.0______129.023____103.475
+// clk_out4____40.000______0.000______50.0______148.655____103.475
+// clk_out5____25.000______0.000______50.0______163.255____103.475
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -68,7 +69,7 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "DTClockGenerator,clk_wiz_v5_4_3_0,{component_name=DTClockGenerator,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=4,clkin1_period=6.250,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "DTClockGenerator,clk_wiz_v5_4_3_0,{component_name=DTClockGenerator,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=5,clkin1_period=6.250,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module DTClockGenerator 
  (
@@ -77,6 +78,7 @@ module DTClockGenerator
   output        clk_out2,
   output        clk_out3,
   output        clk_out4,
+  output        clk_out5,
   // Status and control signals
   output        locked,
  // Clock in ports
@@ -90,6 +92,7 @@ module DTClockGenerator
   .clk_out2(clk_out2),
   .clk_out3(clk_out3),
   .clk_out4(clk_out4),
+  .clk_out5(clk_out5),
   // Status and control signals               
   .locked(locked),
  // Clock in ports

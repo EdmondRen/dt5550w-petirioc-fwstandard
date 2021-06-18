@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-// Date        : Thu Jan 16 12:36:11 2020
-// Host        : vivado4 running 64-bit Ubuntu 18.04.3 LTS
+// Tool Version: Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
+// Date        : Fri Jun 18 17:59:00 2021
+// Host        : abba running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               /home/user/GIT/DT5550W/dt5550w-petirioc-fwstandard/DT5550w.srcs/sources_1/ip/DTClockGenerator/DTClockGenerator_sim_netlist.v
+//               E:/GIT/DT5550W-PETIROC/DT5550W-PETIRIOC-FWSTANDARD/DT5550w.srcs/sources_1/ip/DTClockGenerator/DTClockGenerator_sim_netlist.v
 // Design      : DTClockGenerator
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -18,12 +18,14 @@ module DTClockGenerator
     clk_out2,
     clk_out3,
     clk_out4,
+    clk_out5,
     locked,
     clk_in1);
   output clk_out1;
   output clk_out2;
   output clk_out3;
   output clk_out4;
+  output clk_out5;
   output locked;
   input clk_in1;
 
@@ -32,6 +34,7 @@ module DTClockGenerator
   wire clk_out2;
   wire clk_out3;
   wire clk_out4;
+  wire clk_out5;
   wire locked;
 
   DTClockGenerator_DTClockGenerator_clk_wiz inst
@@ -40,6 +43,7 @@ module DTClockGenerator
         .clk_out2(clk_out2),
         .clk_out3(clk_out3),
         .clk_out4(clk_out4),
+        .clk_out5(clk_out5),
         .locked(locked));
 endmodule
 
@@ -49,12 +53,14 @@ module DTClockGenerator_DTClockGenerator_clk_wiz
     clk_out2,
     clk_out3,
     clk_out4,
+    clk_out5,
     locked,
     clk_in1);
   output clk_out1;
   output clk_out2;
   output clk_out3;
   output clk_out4;
+  output clk_out5;
   output locked;
   input clk_in1;
 
@@ -67,6 +73,8 @@ module DTClockGenerator_DTClockGenerator_clk_wiz
   wire clk_out3_DTClockGenerator;
   wire clk_out4;
   wire clk_out4_DTClockGenerator;
+  wire clk_out5;
+  wire clk_out5_DTClockGenerator;
   wire clkfbout_DTClockGenerator;
   wire clkfbout_buf_DTClockGenerator;
   wire locked;
@@ -77,7 +85,6 @@ module DTClockGenerator_DTClockGenerator_clk_wiz
   wire NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED;
-  wire NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED;
   wire NLW_mmcm_adv_inst_DRDY_UNCONNECTED;
@@ -105,31 +112,35 @@ module DTClockGenerator_DTClockGenerator_clk_wiz
        (.I(clk_out4_DTClockGenerator),
         .O(clk_out4));
   (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFG clkout5_buf
+       (.I(clk_out5_DTClockGenerator),
+        .O(clk_out5));
+  (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(6.000000),
+    .CLKFBOUT_MULT_F(5.000000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(6.250000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(3.000000),
+    .CLKOUT0_DIVIDE_F(2.500000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
-    .CLKOUT1_DIVIDE(6),
+    .CLKOUT1_DIVIDE(5),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),
-    .CLKOUT2_DIVIDE(12),
+    .CLKOUT2_DIVIDE(10),
     .CLKOUT2_DUTY_CYCLE(0.500000),
     .CLKOUT2_PHASE(0.000000),
     .CLKOUT2_USE_FINE_PS("FALSE"),
-    .CLKOUT3_DIVIDE(24),
+    .CLKOUT3_DIVIDE(20),
     .CLKOUT3_DUTY_CYCLE(0.500000),
     .CLKOUT3_PHASE(0.000000),
     .CLKOUT3_USE_FINE_PS("FALSE"),
     .CLKOUT4_CASCADE("FALSE"),
-    .CLKOUT4_DIVIDE(1),
+    .CLKOUT4_DIVIDE(32),
     .CLKOUT4_DUTY_CYCLE(0.500000),
     .CLKOUT4_PHASE(0.000000),
     .CLKOUT4_USE_FINE_PS("FALSE"),
@@ -171,7 +182,7 @@ module DTClockGenerator_DTClockGenerator_clk_wiz
         .CLKOUT2B(NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED),
         .CLKOUT3(clk_out4_DTClockGenerator),
         .CLKOUT3B(NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED),
-        .CLKOUT4(NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED),
+        .CLKOUT4(clk_out5_DTClockGenerator),
         .CLKOUT5(NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED),
         .CLKOUT6(NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED),
         .DADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),

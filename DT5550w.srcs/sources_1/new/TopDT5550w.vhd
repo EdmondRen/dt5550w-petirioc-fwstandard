@@ -33,6 +33,7 @@ entity TopDT5550w is
     Port (  
 --				CLK_P		: in STD_LOGIC;
 --				CLK_N		: in STD_LOGIC;
+           CLK_AUX_OUT_25  : out  STD_LOGIC;
 		   FTDI_CLK : in  STD_LOGIC;
            FTDI_ADBUS : inout  STD_LOGIC_VECTOR (31 downto 0);
            FTDI_BE : inout  STD_LOGIC_VECTOR (3 downto 0);
@@ -631,6 +632,7 @@ END COMPONENT;
      signal clk_out2 : out std_logic;
      signal clk_out3 : out std_logic;
      signal clk_out4 : out std_logic;
+     signal clk_out5 : out std_logic;
      signal locked : out std_logic;
      signal clk_in1  :  in std_logic
     );
@@ -1131,6 +1133,7 @@ begin
        clk_out2 => CLK_160(0),
        clk_out3 => CLK_80(0),
        clk_out4 => CLK_40(0),
+       clk_out5 =>  CLK_AUX_OUT_25,
        locked => GlobalDCMLock,
        clk_in1  => D_LVDS_DCLK
      );
@@ -2079,7 +2082,7 @@ begin
         REG_UNIQUE_WR => open, 
 
          
-        REG_FIRMWARE_BUILD =>x"20012001",
+        REG_FIRMWARE_BUILD =>x"21061801",
         
       --FLASH CONTROLLER
         BUS_Flash_0_READ_DATA => BUS_Flash_0_READ_DATA,

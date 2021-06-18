@@ -56,10 +56,11 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1___320.000______0.000______50.0_______94.983_____95.076
-// clk_out2___160.000______0.000______50.0______108.430_____95.076
-// clk_out3____80.000______0.000______50.0______124.157_____95.076
-// clk_out4____40.000______0.000______50.0______143.129_____95.076
+// clk_out1___320.000______0.000______50.0_______98.330____103.475
+// clk_out2___160.000______0.000______50.0______112.400____103.475
+// clk_out3____80.000______0.000______50.0______129.023____103.475
+// clk_out4____40.000______0.000______50.0______148.655____103.475
+// clk_out5____25.000______0.000______50.0______163.255____103.475
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -76,6 +77,7 @@ module DTClockGenerator_clk_wiz
   output        clk_out2,
   output        clk_out3,
   output        clk_out4,
+  output        clk_out5,
   // Status and control signals
   output        locked,
   input         clk_in1
@@ -115,7 +117,6 @@ wire clk_in2_DTClockGenerator;
    wire clkout1b_unused;
    wire clkout2b_unused;
    wire clkout3b_unused;
-   wire clkout4_unused;
   wire        clkout5_unused;
   wire        clkout6_unused;
   wire        clkfbstopped_unused;
@@ -127,25 +128,29 @@ wire clk_in2_DTClockGenerator;
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
     .DIVCLK_DIVIDE        (1),
-    .CLKFBOUT_MULT_F      (6.000),
+    .CLKFBOUT_MULT_F      (5.000),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (3.000),
+    .CLKOUT0_DIVIDE_F     (2.500),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKOUT1_DIVIDE       (6),
+    .CLKOUT1_DIVIDE       (5),
     .CLKOUT1_PHASE        (0.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
     .CLKOUT1_USE_FINE_PS  ("FALSE"),
-    .CLKOUT2_DIVIDE       (12),
+    .CLKOUT2_DIVIDE       (10),
     .CLKOUT2_PHASE        (0.000),
     .CLKOUT2_DUTY_CYCLE   (0.500),
     .CLKOUT2_USE_FINE_PS  ("FALSE"),
-    .CLKOUT3_DIVIDE       (24),
+    .CLKOUT3_DIVIDE       (20),
     .CLKOUT3_PHASE        (0.000),
     .CLKOUT3_DUTY_CYCLE   (0.500),
     .CLKOUT3_USE_FINE_PS  ("FALSE"),
+    .CLKOUT4_DIVIDE       (32),
+    .CLKOUT4_PHASE        (0.000),
+    .CLKOUT4_DUTY_CYCLE   (0.500),
+    .CLKOUT4_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (6.250))
   mmcm_adv_inst
     // Output clocks
@@ -160,7 +165,7 @@ wire clk_in2_DTClockGenerator;
     .CLKOUT2B            (clkout2b_unused),
     .CLKOUT3             (clk_out4_DTClockGenerator),
     .CLKOUT3B            (clkout3b_unused),
-    .CLKOUT4             (clkout4_unused),
+    .CLKOUT4             (clk_out5_DTClockGenerator),
     .CLKOUT5             (clkout5_unused),
     .CLKOUT6             (clkout6_unused),
      // Input clock control
@@ -220,6 +225,10 @@ wire clk_in2_DTClockGenerator;
   BUFG clkout4_buf
    (.O   (clk_out4),
     .I   (clk_out4_DTClockGenerator));
+
+  BUFG clkout5_buf
+   (.O   (clk_out5),
+    .I   (clk_out5_DTClockGenerator));
 
 
 

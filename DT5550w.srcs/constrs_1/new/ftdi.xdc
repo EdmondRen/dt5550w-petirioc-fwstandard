@@ -1286,3 +1286,11 @@ set_false_path -from [get_clocks D_LVDS_DCLK] -to [get_clocks -of_objects [get_p
 
 set_property IODELAY_GROUP TIME_GROUP_ADC_1 [get_cells adcs/adc_interface1/ADC_DESER1/pins[0].idelaye2_bus]
 set_false_path -from [get_clocks D_LVDS_DCLK] -to [get_clocks -of_objects [get_pins dcm_top/inst/mmcm_adv_inst/CLKOUT0]]
+
+
+##---------------------------------------------------------------------------
+## AUX PROPAGATION CLOCK 25MHz
+##---------------------------------------------------------------------------
+
+set_property PACKAGE_PIN AA10 [get_ports CLK_AUX_OUT_25]
+set_property IOSTANDARD LVCMOS18 [get_ports CLK_AUX_OUT_25]
