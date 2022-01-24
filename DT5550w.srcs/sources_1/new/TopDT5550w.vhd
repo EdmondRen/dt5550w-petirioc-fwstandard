@@ -211,8 +211,11 @@ entity TopDT5550w is
            
            
             FLASH_SPI_CS : out std_logic;
-            FLASH_SPI_DIN : in std_logic;
+          FLASH_SPI_DIN : in std_logic;
             FLASH_SPI_DOUT : out std_logic;
+         
+         UART_TTL_TX : out STD_LOGIC;
+         UART_TTL_RX : out STD_LOGIC;
                    
            clk_100 : std_logic
                               
@@ -813,7 +816,7 @@ END COMPONENT;
     signal itimecode_clock : std_logic;
     signal T0 : std_logic;
     
-    signal T0sel : std_logic := '0';
+    signal T0sel : std_logic_vector(1 downto 0) := "00";
     signal T0sw : std_logic := '0';
     
     signal LEMO4_cntr : std_logic_vector(15 downto 0) := x"0000";
@@ -1126,6 +1129,10 @@ END COMPONENT;
 --    signal D_TRG :  STD_LOGIC_VECTOR(31 downto 0) := (others => '1');
 begin
 
+    UART_TTL_TX <= '1';
+         
+
+
    dcm_top: DTClockGenerator
     port map
      (
@@ -1258,26 +1265,44 @@ begin
     LEMO7 <= T0;
     LEMO5 <= common_trigger;
     
-    T0 <= xT0 or fifo_reset;
+    T0 <= xT0 ;
     
     t0sync : process (D_LVDS_DCLK) 
+        variable cnt_pulser : integer := 0;
     begin
         if rising_edge (D_LVDS_DCLK) then
-            if T0sel = '1' then
-                iT0 <= LEMO1;
-            else
-                iT0 <= T0sw;
-            end if;
+            case T0sel is
+                when "00" =>
+                    iT0 <= fifo_reset;
+                    cnt_pulser :=0;
+                when "01" =>
+                    iT0 <= T0sw;
+                    cnt_pulser :=0;
+                when "10" =>
+                    iT0 <= '0';
+                    if cnt_pulser >= REG_T0sw_freq_WR then
+                        cnt_pulser :=0;
+                        iT0 <= '1';
+                    else
+                        cnt_pulser := cnt_pulser +1;
+                    end if;
+                when "11" =>
+                    iT0 <= LEMO1;
+                    cnt_pulser :=0;
+                when others =>
+                
+            end case;
+
             oT0 <= iT0;
             
             
             if iT0Pulse = x"0" then
                 xT0 <= '0';
             else
-                xT0 <= '1';
                 iT0Pulse <= iT0Pulse -1;  
             end if;
             if (iT0='1' and oT0 ='0') then
+                xT0 <= '1';
                 iT0Pulse <= x"F";
             end if;
             
@@ -1897,7 +1922,7 @@ begin
         end if;
     end process;
 
-   T0sel <= REG_T0sel_WR(0);
+   T0sel <= REG_T0sel_WR(1 downto 0);
    T0sw <= REG_T0sw_WR(0);
 
     f_BUS_CLK <= D_LVDS_DCLK;--FTDI_CLK;
@@ -2082,7 +2107,7 @@ begin
         REG_UNIQUE_WR => open, 
 
          
-        REG_FIRMWARE_BUILD =>x"21061801",
+        REG_FIRMWARE_BUILD =>x"22012401",
         
       --FLASH CONTROLLER
         BUS_Flash_0_READ_DATA => BUS_Flash_0_READ_DATA,

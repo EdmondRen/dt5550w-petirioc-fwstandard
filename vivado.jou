@@ -2,11 +2,11 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Wed Jul 17 10:28:12 2019
-# Process ID: 31020
-# Current directory: e:/GIT/DT5550W-PETIROC/DT5550w-QUAD_ASIC
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent37200 E:\GIT\DT5550W-PETIROC\DT5550w-QUAD_ASIC\DT5550w.xpr
-# Log file: e:/GIT/DT5550W-PETIROC/DT5550w-QUAD_ASIC/vivado.log
-# Journal file: e:/GIT/DT5550W-PETIROC/DT5550w-QUAD_ASIC\vivado.jou
+# Start of session at: Wed Jul 28 12:31:23 2021
+# Process ID: 5524
+# Current directory: e:/GIT/DT5550W-PETIROC/DT5550W-PETIRIOC-FWSTANDARD
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20668 E:\GIT\DT5550W-PETIROC\DT5550W-PETIRIOC-FWSTANDARD\DT5550w.xpr
+# Log file: e:/GIT/DT5550W-PETIROC/DT5550W-PETIRIOC-FWSTANDARD/vivado.log
+# Journal file: e:/GIT/DT5550W-PETIROC/DT5550W-PETIRIOC-FWSTANDARD\vivado.jou
 #-----------------------------------------------------------
 start_gui

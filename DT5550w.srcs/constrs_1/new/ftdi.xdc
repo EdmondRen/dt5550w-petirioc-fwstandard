@@ -1294,3 +1294,10 @@ set_false_path -from [get_clocks D_LVDS_DCLK] -to [get_clocks -of_objects [get_p
 
 set_property PACKAGE_PIN AA10 [get_ports CLK_AUX_OUT_25]
 set_property IOSTANDARD LVCMOS18 [get_ports CLK_AUX_OUT_25]
+
+set_property PACKAGE_PIN C13 [get_ports UART_TTL_TX]
+set_property IOSTANDARD LVCMOS18 [get_ports UART_TTL_TX]
+
+set_property PACKAGE_PIN C14 [get_ports UART_TTL_RX]
+set_property IOSTANDARD LVCMOS18 [get_ports UART_TTL_RX]
+
