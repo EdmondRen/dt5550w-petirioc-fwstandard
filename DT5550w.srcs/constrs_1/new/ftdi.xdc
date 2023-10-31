@@ -1,4 +1,5 @@
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets itimecode_clock]
+#set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets timecode_clock]
 
 set_property PACKAGE_PIN AE18 [get_ports {FTDI_BE[0]}]
 set_property PACKAGE_PIN AF18 [get_ports {FTDI_BE[1]}]
@@ -288,23 +289,32 @@ set_property IOSTANDARD LVCMOS25 [get_ports C_TRASMIT_ON]
 set_property IOSTANDARD LVCMOS25 [get_ports B_TRASMIT_ON]
 set_property IOSTANDARD LVCMOS25 [get_ports A_TRASMIT_ON]
 
-set_property IOSTANDARD LVDS_25 [get_ports C_LVDS_DOUT_P]
-set_property IOSTANDARD LVDS_25 [get_ports C_LVDS_DOUT_N]
 
 set_property IOSTANDARD LVDS_25 [get_ports D_LVDS_DOUT_P]
 set_property IOSTANDARD LVDS_25 [get_ports D_LVDS_DOUT_N]
-
+set_property IOSTANDARD LVDS_25 [get_ports C_LVDS_DOUT_P]
+set_property IOSTANDARD LVDS_25 [get_ports C_LVDS_DOUT_N]
+set_property IOSTANDARD LVDS_25 [get_ports B_LVDS_DOUT_P]
+set_property IOSTANDARD LVDS_25 [get_ports B_LVDS_DOUT_N]
 set_property IOSTANDARD LVDS_25 [get_ports A_LVDS_DOUT_P]
 set_property IOSTANDARD LVDS_25 [get_ports A_LVDS_DOUT_N]
 
-set_property IOSTANDARD LVDS_25 [get_ports B_LVDS_DOUT_P]
-set_property IOSTANDARD LVDS_25 [get_ports B_LVDS_DOUT_N]
 
 
 # 160 MHz clock from CDCE
 set_property PACKAGE_PIN AC9 [get_ports D_LVDS_DCLK_P]
 set_property IOSTANDARD LVDS [get_ports D_LVDS_DCLK_P]
 set_property IOSTANDARD LVDS [get_ports D_LVDS_DCLK_N]
+
+# Enable differential termination of the LVDS lanes -- Tom, 2023-10-31
+set_property DIFF_TERM TRUE [get_ports D_LVDS_DCLK_P]
+
+set_property DIFF_TERM TRUE [get_ports D_LVDS_DOUT_P]
+set_property DIFF_TERM TRUE [get_ports C_LVDS_DOUT_P]
+set_property DIFF_TERM TRUE [get_ports B_LVDS_DOUT_P]
+set_property DIFF_TERM TRUE [get_ports A_LVDS_DOUT_P]
+
+
 
 
 set_property PACKAGE_PIN C12 [get_ports {A_TRG[0]}]
@@ -419,8 +429,10 @@ set_property PACKAGE_PIN C23 [get_ports FLASH_SPI_CS]
 set_property IOSTANDARD LVCMOS25 [get_ports FLASH_SPI_CS]
 
 create_clock -period 6.250 -name D_LVDS_DCLK -waveform {0.000 3.125} [get_ports D_LVDS_DCLK_P]
+create_clock -period 25.000 -name CLK_40_P -waveform {0.000 12.500} [get_ports CLK_40_P]
+set_clock_groups -asynchronous -group [get_clocks CLK_40_P] -group [get_clocks D_LVDS_DCLK]
+create_clock -period 2.283 -name ADC_1_CLK_A_P -waveform {0.000 1.142} [get_ports ADC_1_CLK_A_P]
 
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets timecode_clock]
 
 
 
@@ -883,10 +895,6 @@ set_property IOSTANDARD LVCMOS18 [get_ports {B_TRG[0]}]
 
 
 
-create_clock -period 25.000 -name CLK_40_P -waveform {0.000 12.500} [get_ports CLK_40_P]
-set_clock_groups -asynchronous -group [get_clocks CLK_40_P] -group [get_clocks D_LVDS_DCLK]
-
-create_clock -period 2.283 -name ADC_1_CLK_A_P -waveform {0.000 1.142} [get_ports ADC_1_CLK_A_P]
 set_property PACKAGE_PIN AE11 [get_ports SMADC_1_CLK]
 set_property PACKAGE_PIN AD10 [get_ports SMADC_1_MOSI]
 set_property PACKAGE_PIN AE13 [get_ports SMADC_1_RESET]
@@ -1291,8 +1299,11 @@ set_false_path -from [get_clocks D_LVDS_DCLK] -to [get_clocks -of_objects [get_p
 ## AUX PROPAGATION CLOCK 25MHz
 ##---------------------------------------------------------------------------
 
-set_property PACKAGE_PIN AA10 [get_ports CLK_AUX_OUT_25]
-set_property IOSTANDARD LVCMOS18 [get_ports CLK_AUX_OUT_25]
+#set_property PACKAGE_PIN AA10 [get_ports CLK_AUX_OUT_25]
+#set_property IOSTANDARD LVCMOS18 [get_ports CLK_AUX_OUT_25]
+#Change the out put to 1 kHz
+set_property PACKAGE_PIN AA10 [get_ports CLK_AUX_OUT_1khz]
+set_property IOSTANDARD LVCMOS18 [get_ports CLK_AUX_OUT_1khz]
 
 set_property PACKAGE_PIN C13 [get_ports UART_TTL_TX]
 set_property IOSTANDARD LVCMOS18 [get_ports UART_TTL_TX]
