@@ -48,7 +48,7 @@ entity common_trigger is
            out_extrigger_a : out STD_LOGIC;
            out_extrigger_b : out STD_LOGIC;
            out_extrigger_c : out STD_LOGIC;
-           out_extrigger_d : out STD_LOGIC;
+           out_extrigger_d : out STD_LOGIC
                       
            );
 end common_trigger;

@@ -325,7 +325,7 @@ xpm_T0Timer: xpm_cdc_array_single
                     fifo_we <= storePackage;    
                     start_c_raz <= x"0F";
                     DAQSM <= x"2";
-                    end_counter <= 128;
+                    end_counter <= 127;
                 end if;
                 
                 if inTrasmission = '0' then

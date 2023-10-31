@@ -213,11 +213,8 @@ set_property IOSTANDARD LVDS_25 [get_ports B_VAL_EVT_P]
 set_property IOSTANDARD LVDS_25 [get_ports B_VAL_EVT_N]
 set_property IOSTANDARD LVDS_25 [get_ports C_VAL_EVT_P]
 set_property IOSTANDARD LVDS_25 [get_ports C_VAL_EVT_N]
-
 set_property IOSTANDARD LVDS_25 [get_ports D_VAL_EVT_P]
 set_property IOSTANDARD LVDS_25 [get_ports D_VAL_EVT_N]
-#set_property IOSTANDARD LVDS_25 [get_ports D_VAL_EVT_P]
-#set_property IOSTANDARD LVDS_25 [get_ports D_VAL_EVT_N]
 
 
 set_property PACKAGE_PIN J10 [get_ports PETIROC_A_RSTB]
@@ -236,9 +233,6 @@ set_property IOSTANDARD LVDS_25 [get_ports B_RAZ_CHN_P]
 set_property IOSTANDARD LVDS_25 [get_ports B_RAZ_CHN_N]
 set_property IOSTANDARD LVDS_25 [get_ports C_RAZ_CHN_P]
 set_property IOSTANDARD LVDS_25 [get_ports C_RAZ_CHN_N]
-#set_property IOSTANDARD LVDS_25 [get_ports D_RAZ_CHN_P]
-#set_property IOSTANDARD LVDS_25 [get_ports D_RAZ_CHN_N]
-
 set_property IOSTANDARD LVDS_25 [get_ports D_RAZ_CHN_P]
 set_property IOSTANDARD LVDS_25 [get_ports D_RAZ_CHN_N]
 
@@ -277,18 +271,21 @@ set_property IOSTANDARD LVCMOS18 [get_ports C_HOLD_EXT]
 set_property IOSTANDARD LVCMOS18 [get_ports D_HOLD_EXT]
 
 
+
 set_property PACKAGE_PIN J23 [get_ports D_TRASMIT_ON]
 set_property PACKAGE_PIN E25 [get_ports C_TRASMIT_ON]
+set_property PACKAGE_PIN G21 [get_ports B_TRASMIT_ON]
 set_property PACKAGE_PIN B20 [get_ports A_TRASMIT_ON]
 
 set_property PACKAGE_PIN J26 [get_ports D_LVDS_DOUT_P]
 set_property PACKAGE_PIN G24 [get_ports C_LVDS_DOUT_P]
+set_property PACKAGE_PIN D23 [get_ports B_LVDS_DOUT_P]
 set_property PACKAGE_PIN D21 [get_ports A_LVDS_DOUT_P]
 
-set_property PACKAGE_PIN AC9 [get_ports D_LVDS_DCLK_P]
 
 set_property IOSTANDARD LVCMOS25 [get_ports D_TRASMIT_ON]
 set_property IOSTANDARD LVCMOS25 [get_ports C_TRASMIT_ON]
+set_property IOSTANDARD LVCMOS25 [get_ports B_TRASMIT_ON]
 set_property IOSTANDARD LVCMOS25 [get_ports A_TRASMIT_ON]
 
 set_property IOSTANDARD LVDS_25 [get_ports C_LVDS_DOUT_P]
@@ -300,7 +297,12 @@ set_property IOSTANDARD LVDS_25 [get_ports D_LVDS_DOUT_N]
 set_property IOSTANDARD LVDS_25 [get_ports A_LVDS_DOUT_P]
 set_property IOSTANDARD LVDS_25 [get_ports A_LVDS_DOUT_N]
 
+set_property IOSTANDARD LVDS_25 [get_ports B_LVDS_DOUT_P]
+set_property IOSTANDARD LVDS_25 [get_ports B_LVDS_DOUT_N]
 
+
+# 160 MHz clock from CDCE
+set_property PACKAGE_PIN AC9 [get_ports D_LVDS_DCLK_P]
 set_property IOSTANDARD LVDS [get_ports D_LVDS_DCLK_P]
 set_property IOSTANDARD LVDS [get_ports D_LVDS_DCLK_N]
 
@@ -416,7 +418,7 @@ set_property IOSTANDARD LVCMOS25 [get_ports FLASH_SPI_DIN]
 set_property PACKAGE_PIN C23 [get_ports FLASH_SPI_CS]
 set_property IOSTANDARD LVCMOS25 [get_ports FLASH_SPI_CS]
 
-create_clock -period 6.250 -name D_LVDS_DCLK -waveform {0.000 5.000} [get_ports D_LVDS_DCLK_P]
+create_clock -period 6.250 -name D_LVDS_DCLK -waveform {0.000 3.125} [get_ports D_LVDS_DCLK_P]
 
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets timecode_clock]
 
@@ -495,10 +497,7 @@ set_property IOSTANDARD LVCMOS18 [get_ports {B_TRG[3]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {B_TRG[2]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {B_TRG[1]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {B_TRG[0]}]
-set_property PACKAGE_PIN D23 [get_ports B_LVDS_DOUT_P]
-set_property IOSTANDARD LVDS_25 [get_ports B_LVDS_DOUT_P]
-set_property PACKAGE_PIN G21 [get_ports B_TRASMIT_ON]
-set_property IOSTANDARD LVCMOS25 [get_ports B_TRASMIT_ON]
+
 
 #set_property MARK_DEBUG true [get_nets USBInterface/Inst_ft600_fifo245_core/FTDI_OEN]
 #set_property MARK_DEBUG true [get_nets USBInterface/Inst_ft600_fifo245_core/FTDI_RDN]
@@ -884,7 +883,7 @@ set_property IOSTANDARD LVCMOS25 [get_ports B_TRASMIT_ON]
 
 
 
-create_clock -period 25.000 -name CLK_40_P -waveform {0.000 6.250} [get_ports CLK_40_P]
+create_clock -period 25.000 -name CLK_40_P -waveform {0.000 12.500} [get_ports CLK_40_P]
 set_clock_groups -asynchronous -group [get_clocks CLK_40_P] -group [get_clocks D_LVDS_DCLK]
 
 create_clock -period 2.283 -name ADC_1_CLK_A_P -waveform {0.000 1.142} [get_ports ADC_1_CLK_A_P]

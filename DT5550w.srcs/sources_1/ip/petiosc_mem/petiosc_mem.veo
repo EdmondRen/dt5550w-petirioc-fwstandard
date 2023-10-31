@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2018 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2023 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -47,7 +47,7 @@
 // DO NOT MODIFY THIS FILE.
 
 // IP VLNV: xilinx.com:ip:blk_mem_gen:8.4
-// IP Revision: 1
+// IP Revision: 2
 
 // The following must be inserted into your Verilog file for this
 // core to be instantiated. Change the instance name and port connections
@@ -58,11 +58,11 @@ petiosc_mem your_instance_name (
   .clka(clka),    // input wire clka
   .ena(ena),      // input wire ena
   .wea(wea),      // input wire [0 : 0] wea
-  .addra(addra),  // input wire [9 : 0] addra
+  .addra(addra),  // input wire [10 : 0] addra
   .dina(dina),    // input wire [511 : 0] dina
   .clkb(clkb),    // input wire clkb
   .enb(enb),      // input wire enb
-  .addrb(addrb),  // input wire [13 : 0] addrb
+  .addrb(addrb),  // input wire [14 : 0] addrb
   .doutb(doutb)  // output wire [31 : 0] doutb
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------

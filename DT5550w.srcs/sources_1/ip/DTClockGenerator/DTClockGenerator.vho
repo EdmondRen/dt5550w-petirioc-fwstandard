@@ -55,10 +55,11 @@
 --  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 --   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 ------------------------------------------------------------------------------
--- clk_out1___320.000______0.000______50.0_______94.983_____95.076
--- clk_out2___160.000______0.000______50.0______108.430_____95.076
--- clk_out3____80.000______0.000______50.0______124.157_____95.076
--- clk_out4____40.000______0.000______50.0______143.129_____95.076
+-- clk_out1___320.000______0.000______50.0_______98.330____103.475
+-- clk_out2___160.000______0.000______50.0______112.400____103.475
+-- clk_out3____80.000______0.000______50.0______129.023____103.475
+-- clk_out4____40.000______0.000______50.0______148.655____103.475
+-- clk_out5____25.000______0.000______50.0______163.255____103.475
 --
 ------------------------------------------------------------------------------
 -- Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -76,6 +77,7 @@ port
   clk_out2          : out    std_logic;
   clk_out3          : out    std_logic;
   clk_out4          : out    std_logic;
+  clk_out5          : out    std_logic;
   -- Status and control signals
   locked            : out    std_logic;
   clk_in1           : in     std_logic
@@ -93,6 +95,7 @@ your_instance_name : DTClockGenerator
    clk_out2 => clk_out2,
    clk_out3 => clk_out3,
    clk_out4 => clk_out4,
+   clk_out5 => clk_out5,
   -- Status and control signals                
    locked => locked,
    -- Clock in ports

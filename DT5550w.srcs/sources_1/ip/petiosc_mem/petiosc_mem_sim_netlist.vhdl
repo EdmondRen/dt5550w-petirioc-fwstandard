@@ -1,10 +1,10 @@
--- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+-- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
--- Date        : Fri Jun 18 18:02:26 2021
--- Host        : abba running 64-bit major release  (build 9200)
+-- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+-- Date        : Tue Oct 31 13:58:37 2023
+-- Host        : MatDAQ running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               E:/GIT/DT5550W-PETIROC/DT5550W-PETIRIOC-FWSTANDARD/DT5550w.srcs/sources_1/ip/petiosc_mem/petiosc_mem_sim_netlist.vhdl
+--               C:/Users/mathusla/Documents/MATHUSLA/DT5550W-PETIROC_FPGA_Firmware/dt5550w-petirioc-fwstandard/DT5550w.srcs/sources_1/ip/petiosc_mem/petiosc_mem_sim_netlist.vhdl
 -- Design      : petiosc_mem
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -10216,7 +10216,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity petiosc_mem_blk_mem_gen_v8_4_1_synth is
+entity petiosc_mem_blk_mem_gen_v8_4_2_synth is
   port (
     doutb : out STD_LOGIC_VECTOR ( 31 downto 0 );
     clka : in STD_LOGIC;
@@ -10229,10 +10229,10 @@ entity petiosc_mem_blk_mem_gen_v8_4_1_synth is
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of petiosc_mem_blk_mem_gen_v8_4_1_synth : entity is "blk_mem_gen_v8_4_1_synth";
-end petiosc_mem_blk_mem_gen_v8_4_1_synth;
+  attribute ORIG_REF_NAME of petiosc_mem_blk_mem_gen_v8_4_2_synth : entity is "blk_mem_gen_v8_4_2_synth";
+end petiosc_mem_blk_mem_gen_v8_4_2_synth;
 
-architecture STRUCTURE of petiosc_mem_blk_mem_gen_v8_4_1_synth is
+architecture STRUCTURE of petiosc_mem_blk_mem_gen_v8_4_2_synth is
 begin
 \gnbram.gnativebmg.native_blk_mem_gen\: entity work.petiosc_mem_blk_mem_gen_top
      port map (
@@ -10251,7 +10251,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity petiosc_mem_blk_mem_gen_v8_4_1 is
+entity petiosc_mem_blk_mem_gen_v8_4_2 is
   port (
     clka : in STD_LOGIC;
     rsta : in STD_LOGIC;
@@ -10318,158 +10318,162 @@ entity petiosc_mem_blk_mem_gen_v8_4_1 is
     s_axi_rdaddrecc : out STD_LOGIC_VECTOR ( 14 downto 0 )
   );
   attribute C_ADDRA_WIDTH : integer;
-  attribute C_ADDRA_WIDTH of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 11;
+  attribute C_ADDRA_WIDTH of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 11;
   attribute C_ADDRB_WIDTH : integer;
-  attribute C_ADDRB_WIDTH of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 15;
+  attribute C_ADDRB_WIDTH of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 15;
   attribute C_ALGORITHM : integer;
-  attribute C_ALGORITHM of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 1;
+  attribute C_ALGORITHM of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 1;
   attribute C_AXI_ID_WIDTH : integer;
-  attribute C_AXI_ID_WIDTH of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 4;
+  attribute C_AXI_ID_WIDTH of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 4;
   attribute C_AXI_SLAVE_TYPE : integer;
-  attribute C_AXI_SLAVE_TYPE of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_AXI_SLAVE_TYPE of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_AXI_TYPE : integer;
-  attribute C_AXI_TYPE of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 1;
+  attribute C_AXI_TYPE of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 1;
   attribute C_BYTE_SIZE : integer;
-  attribute C_BYTE_SIZE of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 9;
+  attribute C_BYTE_SIZE of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 9;
   attribute C_COMMON_CLK : integer;
-  attribute C_COMMON_CLK of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_COMMON_CLK of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_COUNT_18K_BRAM : string;
-  attribute C_COUNT_18K_BRAM of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "0";
+  attribute C_COUNT_18K_BRAM of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "0";
   attribute C_COUNT_36K_BRAM : string;
-  attribute C_COUNT_36K_BRAM of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "32";
+  attribute C_COUNT_36K_BRAM of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "32";
   attribute C_CTRL_ECC_ALGO : string;
-  attribute C_CTRL_ECC_ALGO of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "NONE";
+  attribute C_CTRL_ECC_ALGO of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "NONE";
   attribute C_DEFAULT_DATA : string;
-  attribute C_DEFAULT_DATA of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "0";
+  attribute C_DEFAULT_DATA of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "0";
   attribute C_DISABLE_WARN_BHV_COLL : integer;
-  attribute C_DISABLE_WARN_BHV_COLL of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_DISABLE_WARN_BHV_COLL of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_DISABLE_WARN_BHV_RANGE : integer;
-  attribute C_DISABLE_WARN_BHV_RANGE of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_DISABLE_WARN_BHV_RANGE of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_ELABORATION_DIR : string;
-  attribute C_ELABORATION_DIR of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "./";
+  attribute C_ELABORATION_DIR of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "./";
   attribute C_ENABLE_32BIT_ADDRESS : integer;
-  attribute C_ENABLE_32BIT_ADDRESS of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_ENABLE_32BIT_ADDRESS of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_EN_DEEPSLEEP_PIN : integer;
-  attribute C_EN_DEEPSLEEP_PIN of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_EN_DEEPSLEEP_PIN of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_EN_ECC_PIPE : integer;
-  attribute C_EN_ECC_PIPE of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_EN_ECC_PIPE of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_EN_RDADDRA_CHG : integer;
-  attribute C_EN_RDADDRA_CHG of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_EN_RDADDRA_CHG of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_EN_RDADDRB_CHG : integer;
-  attribute C_EN_RDADDRB_CHG of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_EN_RDADDRB_CHG of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_EN_SAFETY_CKT : integer;
-  attribute C_EN_SAFETY_CKT of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_EN_SAFETY_CKT of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_EN_SHUTDOWN_PIN : integer;
-  attribute C_EN_SHUTDOWN_PIN of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_EN_SHUTDOWN_PIN of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_EN_SLEEP_PIN : integer;
-  attribute C_EN_SLEEP_PIN of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_EN_SLEEP_PIN of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_EST_POWER_SUMMARY : string;
-  attribute C_EST_POWER_SUMMARY of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "Estimated Power for IP     :     70.216808 mW";
+  attribute C_EST_POWER_SUMMARY of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "Estimated Power for IP     :     70.216808 mW";
   attribute C_FAMILY : string;
-  attribute C_FAMILY of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "kintex7";
+  attribute C_FAMILY of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "kintex7";
   attribute C_HAS_AXI_ID : integer;
-  attribute C_HAS_AXI_ID of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_AXI_ID of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_ENA : integer;
-  attribute C_HAS_ENA of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 1;
+  attribute C_HAS_ENA of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 1;
   attribute C_HAS_ENB : integer;
-  attribute C_HAS_ENB of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 1;
+  attribute C_HAS_ENB of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 1;
   attribute C_HAS_INJECTERR : integer;
-  attribute C_HAS_INJECTERR of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_INJECTERR of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_MEM_OUTPUT_REGS_A : integer;
-  attribute C_HAS_MEM_OUTPUT_REGS_A of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_MEM_OUTPUT_REGS_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_MEM_OUTPUT_REGS_B : integer;
-  attribute C_HAS_MEM_OUTPUT_REGS_B of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_MEM_OUTPUT_REGS_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_MUX_OUTPUT_REGS_A : integer;
-  attribute C_HAS_MUX_OUTPUT_REGS_A of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_MUX_OUTPUT_REGS_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_MUX_OUTPUT_REGS_B : integer;
-  attribute C_HAS_MUX_OUTPUT_REGS_B of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_MUX_OUTPUT_REGS_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_REGCEA : integer;
-  attribute C_HAS_REGCEA of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_REGCEA of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_REGCEB : integer;
-  attribute C_HAS_REGCEB of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_REGCEB of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_RSTA : integer;
-  attribute C_HAS_RSTA of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_RSTA of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_RSTB : integer;
-  attribute C_HAS_RSTB of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_RSTB of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_SOFTECC_INPUT_REGS_A : integer;
-  attribute C_HAS_SOFTECC_INPUT_REGS_A of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_SOFTECC_INPUT_REGS_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_HAS_SOFTECC_OUTPUT_REGS_B : integer;
-  attribute C_HAS_SOFTECC_OUTPUT_REGS_B of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_HAS_SOFTECC_OUTPUT_REGS_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_INITA_VAL : string;
-  attribute C_INITA_VAL of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "0";
+  attribute C_INITA_VAL of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "0";
   attribute C_INITB_VAL : string;
-  attribute C_INITB_VAL of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "0";
+  attribute C_INITB_VAL of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "0";
   attribute C_INIT_FILE : string;
-  attribute C_INIT_FILE of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "petiosc_mem.mem";
+  attribute C_INIT_FILE of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "petiosc_mem.mem";
   attribute C_INIT_FILE_NAME : string;
-  attribute C_INIT_FILE_NAME of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "no_coe_file_loaded";
+  attribute C_INIT_FILE_NAME of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "no_coe_file_loaded";
   attribute C_INTERFACE_TYPE : integer;
-  attribute C_INTERFACE_TYPE of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_INTERFACE_TYPE of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_LOAD_INIT_FILE : integer;
-  attribute C_LOAD_INIT_FILE of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_LOAD_INIT_FILE of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_MEM_TYPE : integer;
-  attribute C_MEM_TYPE of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 1;
+  attribute C_MEM_TYPE of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 1;
   attribute C_MUX_PIPELINE_STAGES : integer;
-  attribute C_MUX_PIPELINE_STAGES of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_MUX_PIPELINE_STAGES of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_PRIM_TYPE : integer;
-  attribute C_PRIM_TYPE of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 1;
+  attribute C_PRIM_TYPE of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 1;
   attribute C_READ_DEPTH_A : integer;
-  attribute C_READ_DEPTH_A of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 2048;
+  attribute C_READ_DEPTH_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 2048;
   attribute C_READ_DEPTH_B : integer;
-  attribute C_READ_DEPTH_B of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 32768;
+  attribute C_READ_DEPTH_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 32768;
+  attribute C_READ_LATENCY_A : integer;
+  attribute C_READ_LATENCY_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 1;
+  attribute C_READ_LATENCY_B : integer;
+  attribute C_READ_LATENCY_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 1;
   attribute C_READ_WIDTH_A : integer;
-  attribute C_READ_WIDTH_A of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 512;
+  attribute C_READ_WIDTH_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 512;
   attribute C_READ_WIDTH_B : integer;
-  attribute C_READ_WIDTH_B of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 32;
+  attribute C_READ_WIDTH_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 32;
   attribute C_RSTRAM_A : integer;
-  attribute C_RSTRAM_A of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_RSTRAM_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_RSTRAM_B : integer;
-  attribute C_RSTRAM_B of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_RSTRAM_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_RST_PRIORITY_A : string;
-  attribute C_RST_PRIORITY_A of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "CE";
+  attribute C_RST_PRIORITY_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "CE";
   attribute C_RST_PRIORITY_B : string;
-  attribute C_RST_PRIORITY_B of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "CE";
+  attribute C_RST_PRIORITY_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "CE";
   attribute C_SIM_COLLISION_CHECK : string;
-  attribute C_SIM_COLLISION_CHECK of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "ALL";
+  attribute C_SIM_COLLISION_CHECK of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "ALL";
   attribute C_USE_BRAM_BLOCK : integer;
-  attribute C_USE_BRAM_BLOCK of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_USE_BRAM_BLOCK of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_USE_BYTE_WEA : integer;
-  attribute C_USE_BYTE_WEA of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_USE_BYTE_WEA of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_USE_BYTE_WEB : integer;
-  attribute C_USE_BYTE_WEB of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_USE_BYTE_WEB of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_USE_DEFAULT_DATA : integer;
-  attribute C_USE_DEFAULT_DATA of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_USE_DEFAULT_DATA of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_USE_ECC : integer;
-  attribute C_USE_ECC of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_USE_ECC of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_USE_SOFTECC : integer;
-  attribute C_USE_SOFTECC of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_USE_SOFTECC of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_USE_URAM : integer;
-  attribute C_USE_URAM of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 0;
+  attribute C_USE_URAM of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 0;
   attribute C_WEA_WIDTH : integer;
-  attribute C_WEA_WIDTH of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 1;
+  attribute C_WEA_WIDTH of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 1;
   attribute C_WEB_WIDTH : integer;
-  attribute C_WEB_WIDTH of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 1;
+  attribute C_WEB_WIDTH of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 1;
   attribute C_WRITE_DEPTH_A : integer;
-  attribute C_WRITE_DEPTH_A of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 2048;
+  attribute C_WRITE_DEPTH_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 2048;
   attribute C_WRITE_DEPTH_B : integer;
-  attribute C_WRITE_DEPTH_B of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 32768;
+  attribute C_WRITE_DEPTH_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 32768;
   attribute C_WRITE_MODE_A : string;
-  attribute C_WRITE_MODE_A of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "NO_CHANGE";
+  attribute C_WRITE_MODE_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "NO_CHANGE";
   attribute C_WRITE_MODE_B : string;
-  attribute C_WRITE_MODE_B of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "WRITE_FIRST";
+  attribute C_WRITE_MODE_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "WRITE_FIRST";
   attribute C_WRITE_WIDTH_A : integer;
-  attribute C_WRITE_WIDTH_A of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 512;
+  attribute C_WRITE_WIDTH_A of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 512;
   attribute C_WRITE_WIDTH_B : integer;
-  attribute C_WRITE_WIDTH_B of petiosc_mem_blk_mem_gen_v8_4_1 : entity is 32;
+  attribute C_WRITE_WIDTH_B of petiosc_mem_blk_mem_gen_v8_4_2 : entity is 32;
   attribute C_XDEVICEFAMILY : string;
-  attribute C_XDEVICEFAMILY of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "kintex7";
+  attribute C_XDEVICEFAMILY of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "kintex7";
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "blk_mem_gen_v8_4_1";
+  attribute ORIG_REF_NAME of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "blk_mem_gen_v8_4_2";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of petiosc_mem_blk_mem_gen_v8_4_1 : entity is "yes";
-end petiosc_mem_blk_mem_gen_v8_4_1;
+  attribute downgradeipidentifiedwarnings of petiosc_mem_blk_mem_gen_v8_4_2 : entity is "yes";
+end petiosc_mem_blk_mem_gen_v8_4_2;
 
-architecture STRUCTURE of petiosc_mem_blk_mem_gen_v8_4_1 is
+architecture STRUCTURE of petiosc_mem_blk_mem_gen_v8_4_2 is
   signal \<const0>\ : STD_LOGIC;
 begin
   dbiterr <= \<const0>\;
@@ -11074,7 +11078,7 @@ GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
     );
-inst_blk_mem_gen: entity work.petiosc_mem_blk_mem_gen_v8_4_1_synth
+inst_blk_mem_gen: entity work.petiosc_mem_blk_mem_gen_v8_4_2_synth
      port map (
       addra(10 downto 0) => addra(10 downto 0),
       addrb(14 downto 0) => addrb(14 downto 0),
@@ -11106,11 +11110,11 @@ entity petiosc_mem is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of petiosc_mem : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of petiosc_mem : entity is "petiosc_mem,blk_mem_gen_v8_4_1,{}";
+  attribute CHECK_LICENSE_TYPE of petiosc_mem : entity is "petiosc_mem,blk_mem_gen_v8_4_2,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of petiosc_mem : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of petiosc_mem : entity is "blk_mem_gen_v8_4_1,Vivado 2017.4";
+  attribute x_core_info of petiosc_mem : entity is "blk_mem_gen_v8_4_2,Vivado 2018.3";
 end petiosc_mem;
 
 architecture STRUCTURE of petiosc_mem is
@@ -11234,6 +11238,10 @@ architecture STRUCTURE of petiosc_mem is
   attribute C_READ_DEPTH_A of U0 : label is 2048;
   attribute C_READ_DEPTH_B : integer;
   attribute C_READ_DEPTH_B of U0 : label is 32768;
+  attribute C_READ_LATENCY_A : integer;
+  attribute C_READ_LATENCY_A of U0 : label is 1;
+  attribute C_READ_LATENCY_B : integer;
+  attribute C_READ_LATENCY_B of U0 : label is 1;
   attribute C_READ_WIDTH_A : integer;
   attribute C_READ_WIDTH_A of U0 : label is 512;
   attribute C_READ_WIDTH_B : integer;
@@ -11284,9 +11292,9 @@ architecture STRUCTURE of petiosc_mem is
   attribute x_interface_info : string;
   attribute x_interface_info of clka : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA CLK";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of clka : signal is "XIL_INTERFACENAME BRAM_PORTA, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_WRITE_MODE READ_WRITE";
+  attribute x_interface_parameter of clka : signal is "XIL_INTERFACENAME BRAM_PORTA, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
   attribute x_interface_info of clkb : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB CLK";
-  attribute x_interface_parameter of clkb : signal is "XIL_INTERFACENAME BRAM_PORTB, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_WRITE_MODE READ_WRITE";
+  attribute x_interface_parameter of clkb : signal is "XIL_INTERFACENAME BRAM_PORTB, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
   attribute x_interface_info of ena : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA EN";
   attribute x_interface_info of enb : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB EN";
   attribute x_interface_info of addra : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA ADDR";
@@ -11295,7 +11303,7 @@ architecture STRUCTURE of petiosc_mem is
   attribute x_interface_info of doutb : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB DOUT";
   attribute x_interface_info of wea : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA WE";
 begin
-U0: entity work.petiosc_mem_blk_mem_gen_v8_4_1
+U0: entity work.petiosc_mem_blk_mem_gen_v8_4_2
      port map (
       addra(10 downto 0) => addra(10 downto 0),
       addrb(14 downto 0) => addrb(14 downto 0),
